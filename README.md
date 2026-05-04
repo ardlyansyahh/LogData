@@ -92,6 +92,8 @@ Employee attrition is a universal business challenge that directly affects produ
 - Period: 2015 snapshot
 - Format: Tabular HRIS export (.csv)
 - Target Variable: Attrition (Yes/No)
+<img alt="Dataset ERD" src=https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Dataset_Erd.png />
+
 
 ## Dataset
 - data_dictionary
@@ -118,7 +120,54 @@ Employee attrition is a universal business challenge that directly affects produ
 # EDA
 - Some data have positive skew distribution
 <img alt="violin plot of EDA" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/EDA_Violinplot.png" />
--On the Boxplot few data shown have outliers that need to be handled
+
+- On the Boxplot some data shown have outliers that need to be handled
 <img alt="violin plot of EDA" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/EDA_Boxplot.png" />
 
-[WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.WIP.]
+- Many of those who do attrition are:
+
+    - Travel frequently
+    - Human Resource as Education field
+    - Human Resource Department
+    - Job role as Research Director
+    - Single
+    - Overwork
+    - Male
+<img alt="Percentage of retention with bivariate" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/EDA_percentage.png" />
+
+- missing value:
+
+
+|Column|Percentage|
+| :--- | :--- |
+|JobSatisfaction|(0.4%)|
+|EnvironmentSatisfaction|(0.5%)|
+|WorkLifeBalance |(0.8%)|
+|NumCompaniesWorked |(0.4%)|
+|TotalWorkingYears |(0.2%)|
+missing value is handled by filled with the mode
+
+- As per checking there is no duplicate data
+identified in dataframes
+
+
+
+# Preprocessing
+- Outlier handled by using Log transformation ('MonthlyIncome', 'TotalWorkingYears', 'YearsAtCompany', 'YearsSinceLastPromotion', 'YearsWithCurrManager', 'overwork_days')
+
+# Feature Selection & Engineering
+- drop data for having have constant value, StandardHours, EmployeeCount, Over18
+- droping EmployeeID becasue irrelevant
+- droping data with low correlation (e.g.'Gender', 'MonthlyIncome', 'NumCompaniesWorked', 'PercentSalaryHike')
+- Data that have consistent value are being drop ('Over18', 'EmployeeCount', 'StandardHours')
+
+
+===============
+
+On the KDE Plot few data have Constant Value
+Few data have missing value on df_general and df_employee
+Based on the results of the statistical analysis, there are several points that need to be noted:
+
+We need to handle the skewness of the distribution from the outlier
+Consider to drop few feature that have constant value
+Need to handle Missing Value
