@@ -92,8 +92,6 @@ Employee attrition is a universal business challenge that directly affects produ
 - Period: 2015 snapshot
 - Format: Tabular HRIS export (.csv)
 - Target Variable: Attrition (Yes/No)
-<img alt="Dataset ERD" src=https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Dataset_Erd.png />
-
 
 ## Dataset
 - data_dictionary
@@ -102,6 +100,8 @@ Employee attrition is a universal business challenge that directly affects produ
 - employee_survey_data
 - in_time
 - out_time
+
+<img alt="Dataset ERD" src=https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Dataset_Erd.png />
 
 ## Available Features
 
@@ -145,7 +145,6 @@ Employee attrition is a universal business challenge that directly affects produ
 |WorkLifeBalance |(0.8%)|
 |NumCompaniesWorked |(0.4%)|
 |TotalWorkingYears |(0.2%)|
-missing value is handled by filled with the mode
 
 - As per checking there is no duplicate data
 identified in dataframes
@@ -154,20 +153,12 @@ identified in dataframes
 
 # Preprocessing
 - Outlier handled by using Log transformation ('MonthlyIncome', 'TotalWorkingYears', 'YearsAtCompany', 'YearsSinceLastPromotion', 'YearsWithCurrManager', 'overwork_days')
+- missing value is handled by filled with the mode
 
 # Feature Selection & Engineering
 - drop data for having have constant value, StandardHours, EmployeeCount, Over18
 - droping EmployeeID becasue irrelevant
-- droping data with low correlation (e.g.'Gender', 'MonthlyIncome', 'NumCompaniesWorked', 'PercentSalaryHike')
+- droping data with low correlation (e.g.'Gender', 'MonthlyIncome', 'NumCompaniesWorked', 'PercentSalaryHike, etc.')
+<img alt="Percentage of retention with bivariate" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Future%20relation%20scale.png" />
+
 - Data that have consistent value are being drop ('Over18', 'EmployeeCount', 'StandardHours')
-
-
-===============
-
-On the KDE Plot few data have Constant Value
-Few data have missing value on df_general and df_employee
-Based on the results of the statistical analysis, there are several points that need to be noted:
-
-We need to handle the skewness of the distribution from the outlier
-Consider to drop few feature that have constant value
-Need to handle Missing Value
