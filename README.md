@@ -204,4 +204,8 @@ identified in dataframes
 |Random_Forest|![up](https://img.shields.io/badge/0.99-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|![up](https://img.shields.io/badge/0.98-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|1|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|
 |XGBOost|0.99|1|1|0.96|0.98|0.99|1|1|0.99|
 
+![up](https://img.shields.io/badge/Green-brightgreen) = Increasing
+  
+![down](https://img.shields.io/badge/Red-red) = Decreasing
+
 ==W=I=P==W=I=P==W=I=P==
