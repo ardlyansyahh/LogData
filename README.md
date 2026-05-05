@@ -150,7 +150,6 @@ Employee attrition is a universal business challenge that directly affects produ
 identified in dataframes
 
 
-
 # Preprocessing
 - Outlier handled by using Log transformation ('MonthlyIncome', 'TotalWorkingYears', 'YearsAtCompany', 'YearsSinceLastPromotion', 'YearsWithCurrManager', 'overwork_days')
 - missing value is handled by filled with the mode
@@ -161,4 +160,48 @@ identified in dataframes
 - droping data with low correlation (e.g.'Gender', 'MonthlyIncome', 'NumCompaniesWorked', 'PercentSalaryHike, etc.')
 <img alt="Percentage of retention with bivariate" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Future%20relation%20scale.png" />
 
-- Data that have consistent value are being drop ('Over18', 'EmployeeCount', 'StandardHours')
+# Modeling
+
+## Preparation
+- Split Data:
+
+    - Train Data: 80%
+    - Test Data: 20%
+
+- Scaling: Standarixation
+- Handling Imbalance: SMOTE
+<img alt="Comparasion of before and after Attrition Distribution using SMOTE" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Attrition_Distribution_Compare.jpg"/>
+
+## Baseline Model
+- Using Logistis regression without the hyperparameter tuning for get the initial model performance
+
+||Test|Train|
+| :--- | :--- | :--- |
+| Accuracy |0.85|0.86 |
+| Precision |0.61| |
+| Recall |0.24| |
+| F1-Score |0.24| |
+| ROC_AUC |0.77 |0.81 |
+| Recall(CV) |0.24 |0.23 |
+
+## Model Exploration
+
+- Before tuning
+
+| Model | Accuracy (Test) | Accuracy (Train) | Precision (Test) | Recall (Test) | F1-Score (Test) | ROC_AUC (Test) | Recall (Train) | Recall (CV Train) | Recall (CV Test) |
+|-------|-----------------|------------------|------------------|---------------|-----------------|----------------|----------------|-------------------|------------------|
+|Logistic_Regression|0.85|0.86|0.61|0.22|0.32|0.77|0.81|0.24|0.23|
+|Decision_Tree|0.81|0.83|0.42|0.52|0.46|0.75|0.81|0.73|0.69|
+|Random_Forest|0.95|0.99|0.92|0.75|0.83|0.97|1|0.96|0.91|
+|XGBOost|0.99|1|1|0.96|0.98|0.99|1|1|0.99|
+
+- After Tuning
+
+| Model | Accuracy (Test) | Accuracy (Train) | Precision (Test) | Recall (Test) | F1-Score (Test) | ROC_AUC (Test) | Recall (Train) | Recall (CV Train) | Recall (CV Test) |
+|-------|-----------------|------------------|------------------|---------------|-----------------|----------------|----------------|-------------------|------------------|
+|Logistic_Regression|0.85|0.86|![up](https://img.shields.io/badge/0.62-brightgreen)|![up](https://img.shields.io/badge/0.23-brightgreen)|![up](https://img.shields.io/badge/0.33-brightgreen)|0.77|0.81|![down](https://img.shields.io/badge/0.23-red)|0.23|
+|Decision_Tree|![up](https://img.shields.io/badge/0.92-brightgreen)|![up](https://img.shields.io/badge/0.97-brightgreen)|![up](https://img.shields.io/badge/0.76-brightgreen)|![up](https://img.shields.io/badge/0.7-brightgreen)|![up](https://img.shields.io/badge/0.73-brightgreen)|![up](https://img.shields.io/badge/0.91-brightgreen)|![up](https://img.shields.io/badge/0.98-brightgreen)|![up](https://img.shields.io/badge/0.81-brightgreen)|![up](https://img.shields.io/badge/0.74-brightgreen)|
+|Random_Forest|![up](https://img.shields.io/badge/0.99-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|![up](https://img.shields.io/badge/0.98-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|1|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|
+|XGBOost|0.99|1|1|0.96|0.98|0.99|1|1|0.99|
+
+==W=I=P==W=I=P==W=I=P==
