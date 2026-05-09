@@ -175,8 +175,8 @@ identified in dataframes
 ## Baseline Model
 - Using Logistis regression without the hyperparameter tuning for get the initial model performance
 
-|      |Test|Train|
-| :--- | :--- | :--- |
+|      |Test|
+| :--- | :--- |
 | Recall |0.24| |
 | F1-Score |0.35| |
 | ROC_AUC |0.79||
@@ -202,34 +202,45 @@ identified in dataframes
 |XGBoost|0.85|0.90|0.95|
 |ANN (MLP)|0.85|0.89|0.93|
 |Random_Forest|0.81|0.89|0.98|
-|LighGBM|0.81|0.87|0.95|
+|LightGBM|0.81|0.87|0.95|
 |CatBoost|0.77|0.86|0.95|
 
 - After Tuning
 
 | Model |Recall|F1-Score|ROC_AUC|
 |-------|-----------------|------------------|------------------|
-|CatBoost|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.9-brightgreen)|0.95|
-|LightGBM|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.91-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|
-|ANN (MLP)|![down](https://img.shields.io/badge/0.84-red)|![down](https://img.shields.io/badge/0.87-red)|![up](https://img.shields.io/badge/0.95-brightgreen)|
-|XGBoost|![down](https://img.shields.io/badge/0.82-red)|![down](https://img.shields.io/badge/0.88-red)|![up](https://img.shields.io/badge/0.96-brightgreen)|
-|Random_Forest|0.81|0.89|![down](https://img.shields.io/badge/0.97-red)|
+|▲CatBoost|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.9-brightgreen)|0.95|
+|▲LightGBM|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.91-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|
+|▼ANN (MLP)|![down](https://img.shields.io/badge/0.84-red)|![down](https://img.shields.io/badge/0.87-red)|![up](https://img.shields.io/badge/0.95-brightgreen)|
+|▼XGBoost|![down](https://img.shields.io/badge/0.82-red)|![down](https://img.shields.io/badge/0.88-red)|![up](https://img.shields.io/badge/0.96-brightgreen)|
+|▼Random_Forest|0.81|0.89|![down](https://img.shields.io/badge/0.97-red)|
 
 
 - Confusion Matrix (Before Tuning)
 
-|||||||||||||
-|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---| 
-|XGBoost|P+|P-|ANN (MLP)|P+|P-|Random_Forest|P+|P-|LightGBM|P+|P-|
-|A+|1470|10|A+|1462|18|A+|1477|3|A+|1467|13|
-|A-|42|242|A-|43|241|A-|52|232|A-|54|230|
+||True_Positive|False_Negative|False_Positive|True_Ngative|
+|:---|:---|:---|:---|:---|
+|XGBoost|1470|42|10|242|
+|ANN_(MLP)|1462|43|18|241
+|Random_Forest|1477|52|3|232|
+|LightGBM|1467|54|13|230|
+|CatBoost|1474|65|6|219|
 
-> P = Prediction
+- Confusion Matrix (After Tuning)
 
-> A = Actual
+||True_Positive|False_Negative|False_Positive|True_Ngative|
+|:---|:---|:---|:---|:---|
+|▲CatBoost|![down](https://img.shields.io/badge/1470-red)|![down](https://img.shields.io/badge/42-red)|![up](https://img.shields.io/badge/10-brightgreen)|![up](https://img.shields.io/badge/242-brightgreen)|
+|▲LightGBM|![up](https://img.shields.io/badge/1474-brightgreen)|![down](https://img.shields.io/badge/43-red)|![down](https://img.shields.io/badge/6-red)|![down](https://img.shields.io/badge/214-red)|
+|▼ANN_(MLP)|![down](https://img.shields.io/badge/1456-red)|![up](https://img.shields.io/badge/45-brightgreen)|![up](https://img.shields.io/badge/24-brightgreen)|![down](https://img.shields.io/badge/239-red)|
+|▼XGBoost|![down](https://img.shields.io/badge/1465-red)|![up](https://img.shields.io/badge/51-brightgreen)|![up](https://img.shields.io/badge/15-brightgreen)|![down](https://img.shields.io/badge/233-red)|
+|▼Random_Forest|![down](https://img.shields.io/badge/1475-red)|![down](https://img.shields.io/badge/51-red)|![up](https://img.shields.io/badge/5-brightgreen)|![up](https://img.shields.io/badge/233-brightgreen)|
 
-![up](https://img.shields.io/badge/Green-brightgreen) = Increasing
+
+
+
+> ![up](https://img.shields.io/badge/Green-brightgreen) = Increasing
   
-![down](https://img.shields.io/badge/Red-red) = Decreasing
+> ![down](https://img.shields.io/badge/Red-red) = Decreasing
 
 ==W=I=P==W=I=P==W=I=P==
