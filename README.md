@@ -87,7 +87,7 @@ Employee attrition is a universal business challenge that directly affects produ
 - High benefits including reduced recruitment and training costs, and increased employee productivity.
 
 # Data
-- Source: Internal company data
+- [Source: Internal company data ](https://drive.google.com/drive/folders/1K4wW1s68h1yaqAihkGgz9uyMbrYJ8OUN?usp=drive_link)
 - Scope: 4,410 employees
 - Period: 2015 snapshot
 - Format: Tabular HRIS export (.csv)
@@ -165,44 +165,68 @@ identified in dataframes
 ## Preparation
 - Split Data:
 
-    - Train Data: 80%
-    - Test Data: 20%
+    - Train Data: 60%
+    - Test Data: 40%
 
 - Scaling: Standarixation
-- Handling Imbalance: SMOTE
-<img alt="Comparasion of before and after Attrition Distribution using SMOTE" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Attrition_Distribution_Compare.jpg"/>
+- Data Imbalance
+<img alt="Comparasion of before and after Attrition Distribution using SMOTE" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Attrition_Distribution_BeforeSMOTE.png"/>
 
 ## Baseline Model
 - Using Logistis regression without the hyperparameter tuning for get the initial model performance
 
-||Test|Train|
+|      |Test|Train|
 | :--- | :--- | :--- |
-| Accuracy |0.85|0.86 |
-| Precision |0.61| |
 | Recall |0.24| |
-| F1-Score |0.24| |
-| ROC_AUC |0.77 |0.81 |
-| Recall(CV) |0.24 |0.23 |
+| F1-Score |0.35| |
+| ROC_AUC |0.79||
+
+
+- Confusion Matrix
+
+||P+|P-|
+| :--- | :--- | :--- | 
+|A+|1438|42 |
+|A-|216|68|
+
+- P = Prediction
+- A = Actual
+
 
 ## Model Exploration
 
 - Before tuning
 
-| Model | Accuracy (Test) | Accuracy (Train) | Precision (Test) | Recall (Test) | F1-Score (Test) | ROC_AUC (Test) | Recall (Train) | Recall (CV Train) | Recall (CV Test) |
-|-------|-----------------|------------------|------------------|---------------|-----------------|----------------|----------------|-------------------|------------------|
-|Logistic_Regression|0.85|0.86|0.61|0.22|0.32|0.77|0.81|0.24|0.23|
-|Decision_Tree|0.81|0.83|0.42|0.52|0.46|0.75|0.81|0.73|0.69|
-|Random_Forest|0.95|0.99|0.92|0.75|0.83|0.97|1|0.96|0.91|
-|XGBOost|0.99|1|1|0.96|0.98|0.99|1|1|0.99|
+| Model |Recall|F1-Score|ROC_AUC|
+|-------|-----------------|------------------|------------------|
+|XGBoost|0.85|0.90|0.95|
+|ANN (MLP)|0.85|0.89|0.93|
+|Random_Forest|0.81|0.89|0.98|
+|LighGBM|0.81|0.87|0.95|
+|CatBoost|0.77|0.86|0.95|
 
 - After Tuning
 
-| Model | Accuracy (Test) | Accuracy (Train) | Precision (Test) | Recall (Test) | F1-Score (Test) | ROC_AUC (Test) | Recall (Train) | Recall (CV Train) | Recall (CV Test) |
-|-------|-----------------|------------------|------------------|---------------|-----------------|----------------|----------------|-------------------|------------------|
-|Logistic_Regression|0.85|0.86|![up](https://img.shields.io/badge/0.62-brightgreen)|![up](https://img.shields.io/badge/0.23-brightgreen)|![up](https://img.shields.io/badge/0.33-brightgreen)|0.77|0.81|![down](https://img.shields.io/badge/0.23-red)|0.23|
-|Decision_Tree|![up](https://img.shields.io/badge/0.92-brightgreen)|![up](https://img.shields.io/badge/0.97-brightgreen)|![up](https://img.shields.io/badge/0.76-brightgreen)|![up](https://img.shields.io/badge/0.7-brightgreen)|![up](https://img.shields.io/badge/0.73-brightgreen)|![up](https://img.shields.io/badge/0.91-brightgreen)|![up](https://img.shields.io/badge/0.98-brightgreen)|![up](https://img.shields.io/badge/0.81-brightgreen)|![up](https://img.shields.io/badge/0.74-brightgreen)|
-|Random_Forest|![up](https://img.shields.io/badge/0.99-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|![up](https://img.shields.io/badge/0.98-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|1|![up](https://img.shields.io/badge/1-brightgreen)|![up](https://img.shields.io/badge/0.99-brightgreen)|
-|XGBOost|0.99|1|1|0.96|0.98|0.99|1|1|0.99|
+| Model |Recall|F1-Score|ROC_AUC|
+|-------|-----------------|------------------|------------------|
+|CatBoost|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.9-brightgreen)|0.95|
+|LightGBM|![up](https://img.shields.io/badge/0.85-brightgreen)|![up](https://img.shields.io/badge/0.91-brightgreen)|![up](https://img.shields.io/badge/0.96-brightgreen)|
+|ANN (MLP)|![down](https://img.shields.io/badge/0.84-red)|![down](https://img.shields.io/badge/0.87-red)|![up](https://img.shields.io/badge/0.95-brightgreen)|
+|XGBoost|![down](https://img.shields.io/badge/0.82-red)|![down](https://img.shields.io/badge/0.88-red)|![up](https://img.shields.io/badge/0.96-brightgreen)|
+|Random_Forest|0.81|0.89|![down](https://img.shields.io/badge/0.97-red)|
+
+
+- Confusion Matrix (Before Tuning)
+
+|||||||||||||
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---| 
+|XGBoost|P+|P-|ANN (MLP)|P+|P-|Random_Forest|P+|P-|LightGBM|P+|P-|
+|A+|1470|10|A+|1462|18|A+|1477|3|A+|1467|13|
+|A-|42|242|A-|43|241|A-|52|232|A-|54|230|
+
+> P = Prediction
+
+> A = Actual
 
 ![up](https://img.shields.io/badge/Green-brightgreen) = Increasing
   
