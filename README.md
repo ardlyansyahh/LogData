@@ -243,4 +243,34 @@ identified in dataframes
   
 > ![down](https://img.shields.io/badge/Red-red) = Decreasing
 
+## Feature Importance
+<img alt="Feature importance score" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/Feature_Importance.png"/>
+
+- The business insight:
+
+    - Different retention strategies for each age segment
+    - High workload might lead to employees burnout
+    - Employee with shorter and longer tenure shown different attrition pattern
+    - the farther have higher resignation chances
+    - Company need to review salary compaetitivesness and fairness
+
+## Final Model Selection
+### CatBoost
+
+|Metric|Outcome|Interpretation|
+|:---|:---|:---|
+|Recall|0.85|ML can catch 85% True Positive and 15% chances of wrong prediction|
+|ANN_(MLP)|0.90|The model have a good balance between predicting and minimizing false prediction|
+|Random_Forest|1477|ML can predict whose likely or having the higher chance to do attrition|
+
+### SHAP
+
+<img alt="SHAP graph" src="https://github.com/raqiwardhana/FINPRO/blob/main/Asset/SHAP_Graph.png"/>
+
+- The SHAP results doesn't directly indicate data leakage
+- Identified features remain reasonable for an employee attrition problem.
+- Features such as (a)longer work hours, (b)lower satisfaction, (c)lower income, and (d)shorter tenure are common and meaningful rather than suspicious indicators of leakage. 
+
+
+
 ==W=I=P==W=I=P==W=I=P==
